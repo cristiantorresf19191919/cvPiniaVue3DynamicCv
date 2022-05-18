@@ -1,19 +1,13 @@
 # curriculumvue
 
-## Project setup
+## Project headlines
 ```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
+vue3, composition API, strapi request, PINIA state management
 ```
 
-### Compiles and minifies for production
-```
-yarn build
-```
+### 2 months for mvp
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Rush project
+
+
