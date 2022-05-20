@@ -27,7 +27,8 @@ function checkNoEmpties(dataForm){
 
 function sendEmail(body){
   // send email
-  const serviceUrl = 'http://localhost:3500';
+  // const serviceUrl = 'http://localhost:3500';
+  const serviceUrl = 'https://sendemailcv1919.herokuapp.com';
   fetch(`${serviceUrl}/sendEmail`, {
     method: "POST",
     body: JSON.stringify(body),   
