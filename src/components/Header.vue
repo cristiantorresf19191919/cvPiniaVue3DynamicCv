@@ -2,7 +2,7 @@
   <header id="site_header" class="header mobile-menu-hide">
     <div class="header-content">
       <div class="header-photo">
-        <img src="img/sandy.png" id="profile-picture" alt="Sandra Farias" />
+        <AuthorImage :isValid="isValid" />
       </div>
       <div class="header-titles">
         <GenericField
@@ -76,13 +76,13 @@
             customClass=""
             componentTag="a"
             :customAttr="{ href: mainInfo?.Linkedin }"
-            placeholder="Linkedin"         
+            placeholder="Linkedin"
             fieldKey="Linkedin"
             :nestedElement="true"
             :isLink="true"
           >
             <template #nestedEl>
-              <i class="fab fa-linkedin-in"/>
+              <i class="fab fa-linkedin-in" />
             </template>
           </GenericField>
         </li>
@@ -104,6 +104,7 @@ import GenericField from "@/components/GenericField.vue";
 import { useMainStore } from "@/store/mainInfo";
 import { ref, toRefs } from "@vue/reactivity";
 import { computed, onMounted } from "@vue/runtime-core";
+import AuthorImage from "@/components/AuthorImage.vue";
 const props = defineProps(["isValid"]);
 const { isValid } = toRefs(props);
 const store = useMainStore();
@@ -119,5 +120,6 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
+
 </style>
 

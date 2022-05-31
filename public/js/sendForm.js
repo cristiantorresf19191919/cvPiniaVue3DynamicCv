@@ -8,12 +8,12 @@ function reset() {
   email.value = "";
   subject.value = "";
   message.value = "";
-  window.location.href = window.location.pathname+"#home"
+  window.location.href = window.location.pathname + "#home";
 }
 
-function checkNoEmpties(dataForm){
-  const isValid = Object.values(dataForm).every(val => !!val);
-  if (!isValid){
+function checkNoEmpties(dataForm) {
+  const isValid = Object.values(dataForm).every((val) => !!val);
+  if (!isValid) {
     Swal.fire({
       title: "Ups!",
       text: "Parece que ta falto llenar un campo",
@@ -25,32 +25,41 @@ function checkNoEmpties(dataForm){
   return true;
 }
 
-function sendEmail(body){
+function sendEmail(body) {
   // send email
   // const serviceUrl = 'http://localhost:3500';
-  const serviceUrl = 'https://sendemailcv1919.herokuapp.com';
+  const serviceUrl = window.location.href.includes("localhost")
+    ? "http://localhost:3500"
+    : "https://sendemailcv1919.herokuapp.com";
   fetch(`${serviceUrl}/sendEmail`, {
     method: "POST",
-    body: JSON.stringify(body),   
-    headers: { "Content-type": "application/json; charset=UTF-8", },
-  }).then(res => res.json()).then(res => console.log(res));
+    body: JSON.stringify(body),
+    headers: { "Content-type": "application/json; charset=UTF-8" },
+  })
+    .then((res) => res.json())
+    .then((res) => console.log(res));
 }
-
-
 
 const url = window.url;
 //enviar formulario
 const form = document.querySelector("#contact_form");
 const button2 = document.querySelector("#submit-button-bonito");
-if (button2){
+if (button2) {
   button2.addEventListener("click", () => {
-    const destinyEmail = window.strapi.correo || "cristian.torres19@hotmail.com";
-    const body = { name:name.value, email:email.value, subject:subject.value, message:message.value, destinyEmail };
-   
+    const destinyEmail =
+      window.strapi.correo || "cristian.torres19@hotmail.com";
+    const body = {
+      name: name.value,
+      email: email.value,
+      subject: subject.value,
+      message: message.value,
+      destinyEmail,
+    };
+
     if (!checkNoEmpties(body)) return;
-  
+
     console.log("boom >> ", body);
-  
+
     fetch(`${url}/api/formularios`, {
       method: "POST",
       body: JSON.stringify({ data: body }),
@@ -68,9 +77,7 @@ if (button2){
           confirmButtonText: "Gracias",
         });
         reset();
-        sendEmail(body)
+        sendEmail(body);
       });
   });
-
 }
-

@@ -1,8 +1,10 @@
 <template>
   <body>
-    <div v-if="isValid" class="hidden-auth-data">admin :{{ userName }}</div>
-
+    <div v-if="isValid" class="hidden-auth-data">admin :{{ userName }}</div>  
     <div class="hidden-auth" v-else @click="loginRedirect"></div>
+
+    <div @click="viewPublic" v-if="isValid" style="left:50%; width:10rem; cursor:pointer; z-index:99999; opacity:0.8" class="hidden-auth-data">Ver como publico</div>  
+
 
     <!-- Animated Background -->
     <div
@@ -161,5 +163,10 @@ function hideTitleBlockIcon() {
 }
 function handleIconEditClick(e) {
   console.log("🚀e >>", e);
+}
+function viewPublic(){
+  localStorage.setItem("isPublic", true);
+  localStorage.clear();
+  window.location.reload();
 }
 </script>

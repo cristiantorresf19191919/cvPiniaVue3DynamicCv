@@ -52,8 +52,8 @@ function populateHome(respuesta){
     const foto = respuesta.data[0]?.attributes?.foto;
     const urlFoto =
     url + foto?.data?.attributes?.url;
-    const picDom = document.querySelector("#profile-picture");
-    picDom.setAttribute("src", urlFoto);
+    // const picDom = document.querySelector("#profile-picture");
+    // picDom.setAttribute("src", urlFoto);
     if (!acerca || !foto) return;
     // acerca
     const {
